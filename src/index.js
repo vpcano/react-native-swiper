@@ -3,6 +3,7 @@
  * @author leecade<leecade@163.com>
  */
 import React, { Component } from 'react'
+import Animated, { useAnimatedScrollHandler } from 'react-native-reanimated'
 import PropTypes from 'prop-types'
 import {
   Text,
@@ -324,7 +325,7 @@ export default class extends Component {
     if(this.state.total > 1) {
       this.scrollView.scrollTo({ ...offset, animated: false })
     }
-	
+
     if (this.initialRender) {
       this.initialRender = false
     }
@@ -768,9 +769,9 @@ export default class extends Component {
     }
   }
 
-  renderScrollView = pages => {
+  renderScrollView = (pages) => {
     return (
-      <ScrollView
+      <Animated.ScrollView
         ref={this.refScrollView}
         {...this.props}
         {...this.scrollViewPropOverrides()}
@@ -782,7 +783,7 @@ export default class extends Component {
         style={this.props.scrollViewStyle}
       >
         {pages}
-      </ScrollView>
+      </Animated.ScrollView>
     )
   }
 
